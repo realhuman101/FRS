@@ -1,6 +1,7 @@
 # Main
 /node_modules
 .DS_Store
+save.json
 
 # Editor
 /.vscode
