@@ -1,0 +1,72 @@
+#quiz {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: calc(100% - 64px);
+	justify-content: center;
+	text-align: center;
+}
+
+input {
+	margin: auto;
+}
+
+#stats {
+	width: calc(100% - 64px);
+}
+
+#stats > hr {
+    margin: 60px auto;
+}
+
+.statSect {
+	width: calc(100% - 70px);
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.stat-container {
+	flex: 1;
+	display: block;
+	position: relative;
+}
+
+.statContent {
+	position: relative;
+	display: flex;
+}
+  
+.statNum {
+	text-align: center;
+	font-size: 36px;
+	font-weight: 400;
+	letter-spacing: 0.05em;
+	justify-content: center;
+}
+  
+.statLabel {
+	font-size: 12px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#wrongQuestions {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.wrongCard {
+	background-color: white;
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	color: rgb(67, 67, 67);
+}

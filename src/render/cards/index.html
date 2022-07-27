@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>FRS</title>
+
+		<link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="./style.css">
+
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		<script src="../jquery-3.6.0.min.js"></script>
+		<script type="module" src="../sendAlert.js"></script>
+		<script>if (window.module) module = window.module;</script>
+	</head>
+	<body>
+		<i class="backArrow" onclick="location.href = '../main/index.html'"></i>
+		<h1 class="title">Modify Cards</h1>
+		<hr>
+		<div id="addCard">
+			<h2 class="subtitle">Add Card</h2>
+			<hr>
+			<form id="cardForm" onsubmit="return false">
+				<input type="text" id="cardQuestion" placeholder="Question" minlength="5" maxlength="20" required>
+				<input type="text" id="cardAnswer" placeholder="Answer" maxlength="50" required>
+				<input type="submit" value="Add Card">
+			</form>
+		</div>
+		<hr>
+		<div id="viewCards">
+			<h2 class="subtitle">View Cards</h2>
+			<hr>
+			<div id="cards">
+			
+			</div>
+		</div>
+			
+		<script type="module" src="./script.js"></script>
+	</body>
+</html>

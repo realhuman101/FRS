@@ -1,0 +1,9 @@
+# Main
+/node_modules
+.DS_Store
+
+# Editor
+/.vscode
+
+# Extra
+/other

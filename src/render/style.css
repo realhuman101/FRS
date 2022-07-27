@@ -1,0 +1,145 @@
+/* MAIN */
+
+* {
+	font-family: 'Manrope', sans-serif;
+}
+
+body {
+	background-color: rgb(217, 217, 217);
+	margin: 0px;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.title {
+	font-size: 30px;
+}
+
+.subtitle {
+	font-size: 25px;
+}
+
+.description {
+	font-size: 15px;
+	font-style: italic;
+	color: rgb(15, 15, 15);
+	margin-top: 0px;
+}
+
+hr {
+	border-radius: 1.5px;
+	margin: 0px 25px;
+	width: calc(100% - 50px);
+}
+
+button,
+input[type="submit"],
+input[type="button"] {
+	width: fit-content;
+	border: none;
+	border-radius: 3px;
+	padding: 10px 30px;
+	font-size: 15px;
+	color: white;
+	background-color: rgb(67, 67, 67);
+	transition: opacity 300ms ease-in-out;
+}
+
+button:hover,
+button:focus,
+input[type="submit"]:hover,
+input[type="submit"]:focus,
+input[type="button"]:hover,
+input[type="button"]:focus {
+	opacity: .7;
+	cursor: pointer;
+}
+
+
+/* INPUTS */
+
+input[type="text"] {
+	border: none;
+	border-bottom: 1px solid gray;
+	outline: none;
+	background-color: transparent;
+	margin: 5px;
+	width: calc(100% - 10px);
+}
+
+::-webkit-input-placeholder {
+	font-family: 'Manrope', sans-serif;
+	font-style: italic;
+}
+
+
+/* ALERT */
+
+.alert {
+	top: -100px;
+    background-color: white;
+    padding: 20px 200px;
+    border-radius: 5px;
+    outline: none;
+    position: absolute;
+    color: black;
+    text-align: center;
+    font-size: 22px;
+    transition: top .4s ease-in-out;
+}
+
+.slide-in {
+    top: calc(50% - 64px);
+}
+
+.slide-out {
+    top: 110%;
+}
+
+
+/* SPECIAL SYMBOLS */
+
+.backArrow {
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 10px;
+	padding: 4px;
+	transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+	transition: opacity 200ms ease-in-out;
+}
+
+.backArrow:hover,
+.backArrow:focus {
+	cursor: pointer;
+	opacity: .6;
+}
+
+
+/* KEYFRAMES */
+
+@keyframes slidein {
+    from {
+        bottom: -80px;
+    }
+    to {
+        bottom: 20px;
+    }
+}
+
+@keyframes slideout {
+    from {
+        bottom: 20px;
+    }
+    tp {
+        bottom: -80px;
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "frs",
+  "version": "1.0.0",
+  "description": "Flashcard Revision Software",
+  "main": "src/main.js",
+  "author": "Valentina Banner",
+  "scripts": {
+    "start": "electron ./src/main.js"
+  }
+}

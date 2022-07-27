@@ -1,0 +1,26 @@
+#addCard,
+#viewCards,
+#cardForm {
+	margin: 20px;
+	width: calc(100% - 40px);
+}
+
+#cards {
+	display: flex;
+	flex-wrap: wrap;
+	width: calc(100% - 25px);
+	gap: 10px;
+	margin: 10px;
+}
+
+.card {
+	width: 150px;
+	height: 150px;
+	background-color: rgb(67, 67, 67);
+	color: white;
+	padding: 20px;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	vertical-align: middle;
+}
