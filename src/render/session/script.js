@@ -33,7 +33,7 @@ function setQuestions (cards, current) {
 		const guess = $('#answer').val();
 		$('#answer').val('');
 
-		if (guess == currentCard.answer) {
+		if (checkAnswer(guess,currentCard)) {
 			correctAmt = correctAmt + 1;
 
 			showAlert('Congratulations! Correct answer!');
@@ -87,4 +87,28 @@ function showResults (cards) {
 	});
 
 	document.getElementById('stats').style.display = 'block';
+}
+
+function checkAnswer(guess,cardData) {
+	var answer = cardData.answer;
+	const inputVal = cardData.inputValidation;
+
+	if (!(inputVal.caseSensitive)) {
+		guess = guess.toLowerCase();
+		answer = answer.toLowerCase();
+	}
+	if (inputVal.ignoreTrailing) {
+		guess = guess.trim();
+		answer = answer.trim();
+	}
+	if (inputVal.ignoreSpaces) {
+		guess = guess.replace(/\s/g, '');
+		answer = answer.replace(/\s/g, '');
+	}
+	if (inputVal.convertDash) {
+		guess = guess.replace(/-/g, ' ');
+		answer = answer.replace(/-/g, ' ');
+	}
+
+	return (guess == answer)
 }
