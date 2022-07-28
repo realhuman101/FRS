@@ -29,10 +29,22 @@
 		<hr>
 		<div id="viewCards">
 			<h2 class="subtitle">View Cards</h2>
-			<h3 class="description">Click to delete cards</h3>
+			<h3 class="description">Left-Click to delete cards, Right-Click to edit cards</h3>
 			<hr>
 			<div id="cards">
 				
+			</div>
+			
+			<div id="modifyCard" style="display: none">
+				<div class="modifyCardPopup">
+					<h2 class="subtitle">Edit Card</h2>
+					<hr>
+					<form id="editCard" onsubmit="return false">
+						<input type="text" id="editQuestion" placeholder="New Question" minlength="5" maxlength="150" required>	
+						<input type="text" id="editAnswer" placeholder="New Answer" maxlength="250" required>
+						<input type="submit" value="Edit Card">
+					</form>
+				</div>	
 			</div>
 		</div>
 			
