@@ -63,8 +63,8 @@ function updateCardView() {
 			const subtitle = document.createElement('p');
 
 			card.className = 'card';
-			card.onclick = function () {deleteCard(this,elem)}
-			card.oncontextmenu = function () {modifyCard(this,elem)}
+			card.onclick = function () {modifyCard(this,elem)}
+			card.oncontextmenu = function () {deleteCard(this,elem)}
 
 			title.innerText = elem.question;
 			subtitle.innerText = elem.answer;
