@@ -15,7 +15,13 @@ $(document).ready(function () {
 
 			file.cards.push({
 				question: question,
-				answer: answer
+				answer: answer,
+				inputValidation: {
+					caseSensitive: $('#caseSensitive').is(":checked"),
+					ignoreTrailing: $('#ignoreTrailing').is(":checked"),
+					ignoreSpaces: $('#ignoreSpaces').is(":checked"),
+					convertDash: $('#convertDash').is(":checked")
+				}
 			});
 			
 			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
@@ -24,6 +30,11 @@ $(document).ready(function () {
 
 			$('#cardQuestion').val('');
 			$('#cardAnswer').val('');
+			
+			$('#caseSensitive').prop('checked', true);
+			$('#ignoreTrailing').prop('checked', true);
+			$('#ignoreSpaces').prop('checked', false);
+			$('#convertDash').prop('checked', false);
 
 			updateCardView();
 
@@ -82,6 +93,16 @@ function deleteCard(card,cardData) {
 
 function modifyCard(card,cardData) {
 	fs.readFile(fileName, 'utf8', function (error, data) {
+		const inputValidation = cardData.inputValidation;
+
+		$('#editQuestion').val(cardData.question);
+		$('#editAnswer').val(cardData.answer);
+
+		$('#EcaseSensitive').prop('checked', inputValidation.caseSensitive);
+		$('#EignoreTrailing').prop('checked', inputValidation.ignoreTrailing);
+		$('#EignoreSpaces').prop('checked', inputValidation.ignoreSpaces);
+		$('#EconvertDash').prop('checked', inputValidation.convertDash);
+		
 		$('#modifyCard').css({'display':'block'});
 
 		$('#editCard').submit(function (e) {
@@ -95,6 +116,12 @@ function modifyCard(card,cardData) {
 			
 			file.cards[index].question = question;
 			file.cards[index].answer = answer;
+			file.cards[index].inputValidation = {
+				caseSensitive: $('#EcaseSensitive').is(":checked"),
+				ignoreTrailing: $('#EignoreTrailing').is(":checked"),
+				ignoreSpaces: $('#EignoreSpaces').is(":checked"),
+				convertDash: $('#EconvertDash').is(":checked")
+			}
 			
 			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
 				if (err) return console.log(err);
@@ -104,6 +131,11 @@ function modifyCard(card,cardData) {
 
 			$('#editQuestion').val('');
 			$('#editAnswer').val('');
+
+			$('#EcaseSensitive').prop('checked', true);
+			$('#EignoreTrailing').prop('checked', true);
+			$('#EignoreSpaces').prop('checked', false);
+			$('#EconvertDash').prop('checked', false);
 
 			updateCardView();
 
