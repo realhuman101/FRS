@@ -31,11 +31,9 @@ $(document).ready(function () {
 		})
 	})
 
-	$('#modifyCard').click(function(e) {
-		if (e.target.id == 'modifyCard') {
-			$('#modifyCard').css({'display':'none'});
-		}
-	});
+	$('.card').click(function () {
+		console.log('card element clicked');
+	})
 })
 
 function updateCardView() {
@@ -53,7 +51,6 @@ function updateCardView() {
 
 			card.className = 'card';
 			card.onclick = function () {deleteCard(this,elem)}
-			card.oncontextmenu = function () {modifyCard(this,elem)}
 
 			title.innerText = elem.question;
 			subtitle.innerText = elem.answer;
@@ -68,6 +65,7 @@ function updateCardView() {
 function deleteCard(card,cardData) {
 	fs.readFile(fileName, 'utf8', function (error, data) {
 		var file = JSON.parse(data);
+
 		const cards = file.cards;
 
 		file.cards.splice(cards.indexOf(cardData),1);
@@ -77,37 +75,5 @@ function deleteCard(card,cardData) {
 		});
 
 		card.remove();
-	})
-}
-
-function modifyCard(card,cardData) {
-	fs.readFile(fileName, 'utf8', function (error, data) {
-		$('#modifyCard').css({'display':'block'});
-
-		$('#editCard').submit(function (e) {
-			var file = JSON.parse(data);
-			const cards = file.cards;
-			
-			const index = cards.findIndex((obj => (obj.answer == cardData.answer) && (obj.question == cardData.question)));
-			
-			const question = $('#editQuestion').val();
-			const answer = $('#editAnswer').val();
-			
-			file.cards[index].question = question;
-			file.cards[index].answer = answer;
-			
-			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
-				if (err) return console.log(err);
-			});
-			
-			$('#modifyCard').css({'display':'none'});
-
-			$('#editQuestion').val('');
-			$('#editAnswer').val('');
-
-			updateCardView();
-
-			$('#editCard').unbind('submit');
-		})
 	})
 }
