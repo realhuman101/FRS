@@ -65,10 +65,6 @@
 	animation-duration: 450ms;
 }
 
-.inputValidation {
-	margin: 10px 0px;
-}
-
 @keyframes fadeIn {
 	0% {
 		opacity: 0;
