@@ -23,6 +23,14 @@
 			<form id="cardForm" onsubmit="return false">
 				<input type="text" id="cardQuestion" placeholder="Question" minlength="5" maxlength="150" required>
 				<input type="text" id="cardAnswer" placeholder="Answer" maxlength="250" required>
+				<hr style="margin: 10px auto">
+				<h3 class="description">Input Validation</h3>
+				<div class="inputValidation">
+					<input type="checkbox" id="caseSensitive" checked>Case Sensitive
+					<input type="checkbox" id="ignoreTrailing" checked>Ignore Trailing Spaces
+					<input type="checkbox" id="ignoreSpaces">Ignore All Spaces
+					<input type="checkbox" id="convertDash">Convert Dashes to Spaces
+				</div>
 				<input type="submit" value="Add Card">
 			</form>
 		</div>
