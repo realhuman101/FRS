@@ -15,7 +15,13 @@ $(document).ready(function () {
 
 			file.cards.push({
 				question: question,
-				answer: answer
+				answer: answer,
+				inputValidation: {
+					caseSensitive: $('#caseSensitive').is(":checked"),
+					ignoreTrailing: $('#ignoreTrailing').is(":checked"),
+					ignoreSpaces: $('#ignoreSpaces').is(":checked"),
+					convertDash: $('#convertDash').is(":checked")
+				}
 			});
 			
 			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
@@ -24,6 +30,11 @@ $(document).ready(function () {
 
 			$('#cardQuestion').val('');
 			$('#cardAnswer').val('');
+			
+			$('#caseSensitive').prop('checked', true);
+			$('#ignoreTrailing').prop('checked', true);
+			$('#ignoreSpaces').prop('checked', false);
+			$('#convertDash').prop('checked', false);
 
 			updateCardView();
 
