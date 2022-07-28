@@ -9,8 +9,6 @@ $(document).ready(function () {
 	$('#cardForm').submit(function (e) {
 		fs.readFile(fileName, 'utf8', function (error, data) {
 			var file = JSON.parse(data);
-
-			console.log('form submitted')
 			
 			const question = $('#cardQuestion').val();
 			const answer = $('#cardAnswer').val();
@@ -22,8 +20,6 @@ $(document).ready(function () {
 			
 			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
 				if (err) return console.log(err);
-				console.log(JSON.stringify(file));
-				console.log('writing to ' + fileName);
 			});
 
 			$('#cardQuestion').val('');
@@ -33,6 +29,10 @@ $(document).ready(function () {
 
 			showAlert('Card Created');
 		})
+	})
+
+	$('.card').click(function () {
+		console.log('card element clicked');
 	})
 })
 
@@ -50,6 +50,7 @@ function updateCardView() {
 			const subtitle = document.createElement('p');
 
 			card.className = 'card';
+			card.onclick = function () {deleteCard(this,elem)}
 
 			title.innerText = elem.question;
 			subtitle.innerText = elem.answer;
@@ -58,5 +59,21 @@ function updateCardView() {
 			card.appendChild(title);
 			card.appendChild(subtitle);
 		});
+	})
+}
+
+function deleteCard(card,cardData) {
+	fs.readFile(fileName, 'utf8', function (error, data) {
+		var file = JSON.parse(data);
+
+		const cards = file.cards;
+
+		file.cards.splice(cards.indexOf(cardData),1);
+
+		fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+			if (err) return console.log(err);
+		});
+
+		card.remove();
 	})
 }

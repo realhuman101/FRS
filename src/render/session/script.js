@@ -12,7 +12,15 @@ $(document).ready(function () {
 
 		const cards = file.cards;
 
-		setQuestions(cards, 0);
+		if (cards.length == 0) {
+			$('#quiz').remove();
+			showAlert('No questions available');
+			setTimeout(() => {
+				location.href = '../main/index.html';
+			}, 1910)
+		} else {
+			setQuestions(cards, 0);
+		}
 	})
 })
 
@@ -38,7 +46,6 @@ function setQuestions (cards, current) {
 		}
 
 		current = current + 1;
-		
 		
 		if (cards.length == current) {
 			showResults(cards);

@@ -6,5 +6,8 @@
   "author": "Valentina Banner",
   "scripts": {
     "start": "electron ./src/main.js"
+  },
+  "devDependencies": {
+    "electron": "^19.0.10"
   }
 }

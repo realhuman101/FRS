@@ -24,3 +24,9 @@
 	flex-direction: column;
 	vertical-align: middle;
 }
+
+.card:hover,
+.card:focus {
+	opacity: .7;
+	cursor: pointer;
+}
