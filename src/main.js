@@ -8,13 +8,14 @@ function createWindow () {
     width: 800,
     height: 600,
     fullscreenable: true,
-    fullscreen: true,
+    fullscreen: (process.platform == 'darwin'),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
     }
   })
 
+  win.maximize()
   win.loadFile('src/render/main/index.html')
 }
 
