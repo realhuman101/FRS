@@ -206,5 +206,7 @@ function selectCardPack(cardPackData) {
 
 		$('#packSelect').css({'display':'none'});
 		$('#cardConfig').css({'display':'initial'});
+
+		updateCardView();
 	})
 }
