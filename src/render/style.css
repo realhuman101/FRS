@@ -60,6 +60,10 @@ input[type="button"]:focus {
 	cursor: pointer;
 }
 
+button:disabled {
+	opacity: .7;
+	cursor: not-allowed;
+}
 
 /* INPUTS */
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+
+		<title>FRS</title>
+
+		<link rel="stylesheet" href="../style.css">
+		<link rel="stylesheet" href="./style.css">
+
+		<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+		<script src="../jquery-3.6.0.min.js"></script>
+		<script type="module" src="../sendAlert.js"></script>
+		<script>if (window.module) module = window.module;</script>
+	</head>
+	<body>
+		<i class="backArrow" id="backArrow" onclick="location.href = '../main/index.html'"></i>
+		<h1 class="title">Flashcards</h1>
+		<h3 id="flashcardInstruct" class="description" style="display: none">Click card to flip</h3>
+		<hr>
+		<div id="selectPack" style="display: initial">
+			<h2 class="subtitle">Select Card Pack</h2>
+			<hr>
+			<div id="cardPacks">
+				
+			</div>
+		</div>
+
+		<div id="flashcards" style="display: none">
+			<div id="flashcard">
+				<div id="inner">
+					<div class="front">
+						<h2 id="question"></h2>
+					</div>
+					<div class="back">
+						<h3 id="answer"></h3>
+					</div>
+				</div>
+			</div>
+
+			<hr style="margin: 10px; visibility: hidden">
+
+			<div id="cardControl">
+				<button id="previous"><</button>	
+				<button id="next">></button>
+			</div>
+		</div>
+
+		<script type="module" src="./script.js"></script>
+	</body>
+</html>
