@@ -121,3 +121,14 @@
     	transform: translate3d(0, 0, 0);
 	}
 }
+
+#deleteCardPack {
+	font-style: italic;
+	text-decoration: underline;
+	font-size: 13px;
+}
+
+#deleteCardPack:hover,
+#deleteCardPack:focus {
+	cursor: pointer;
+}

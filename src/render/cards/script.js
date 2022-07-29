@@ -239,9 +239,36 @@ function editCardPack(cardPackData) {
 			$('#modifyCardPack').css({'display':'none'});
 
 			$('#editName').val('');
+			
 			updateCardPackView();
 
 			$('#editCardPack').unbind('submit');
+			$('#deleteCardPack').unbind('click');
+		})
+
+		$('#deleteCardPack').click(function() {
+			if (confirm("Are you sure you want to delete this card pack? All its contents will be deleted")) {
+				var file = JSON.parse(data);
+				const cardPacks = file.cardPacks;
+
+				const index = cardPacks.findIndex((obj => obj.name == cardPackData.name));
+
+				file.cardPacks.splice(index, 1);
+
+				fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+					if (err) return console.log(err);
+				});
+
+				updateCardPackView();
+
+				$('#modifyCardPack').css({'display':'none'});
+				$('#editName').val('');
+
+				showAlert('Card Pack Deleted');
+
+				$('#editCardPack').unbind('submit');
+				$('#deleteCardPack').unbind('click');
+			}
 		})
 	})
 }
