@@ -6,11 +6,17 @@ const fileName = './save.json';
 var wrongQuestions = []
 var correctAmt = 0
 
+var cardPackInd;
+
 $(document).ready(function () {
+	updateCardPackView();
+})
+
+function setup() {
 	fs.readFile(fileName, 'utf8', function (error, data) {
 		const file = JSON.parse(data);
 
-		const cards = file.cards;
+		const cards = file.cardPacks[cardPackInd].cards;
 
 		if (cards.length == 0) {
 			$('#quiz').remove();
@@ -22,7 +28,7 @@ $(document).ready(function () {
 			setQuestions(cards, 0);
 		}
 	})
-})
+}
 
 function setQuestions (cards, current) {
 	var currentCard = cards[current];
@@ -111,4 +117,42 @@ function checkAnswer(guess,cardData) {
 	}
 
 	return (guess == answer)
+}
+
+function updateCardPackView() {
+	fs.readFile(fileName, 'utf8', function (error, data) {
+		$('#cardPacks').empty();
+
+		const file = JSON.parse(data);
+
+		const items = file.cardPacks;
+
+		items.forEach(elem => {
+			const card = document.createElement('div');
+			const name = document.createElement('h3');
+
+			card.className = 'cardPack';
+			card.onclick = function() {selectCardPack(elem)}
+
+			name.innerText = elem.name;
+
+			document.getElementById('cardPacks').appendChild(card);
+			card.appendChild(name);
+		});
+	})
+}
+
+function selectCardPack(cardPackData) {
+	fs.readFile(fileName, 'utf8', function (error, data) {
+		const file = JSON.parse(data);
+		const cardPacks = file.cardPacks;
+
+		let cardPack = cardPackData.name;
+		cardPackInd = cardPacks.findIndex(x => x.name == cardPack);
+
+		$('#selectPack').css({'display':'none'});
+		$('#quiz').css({'display':'initial'});
+
+		setup();
+	})
 }
