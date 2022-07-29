@@ -70,3 +70,29 @@ input {
 	justify-content: center;
 	color: rgb(67, 67, 67);
 }
+
+.cardPack {
+	background-color: white;
+	border-radius: 5px;
+	margin: 10px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+	color: rgb(67, 67, 67);
+	transition: -webkit-filter 200ms ease-in-out, -moz-filter 200ms ease-in-out;
+}
+
+.cardPack:hover,
+.cardPack:focus {
+	filter: brightness(95%);
+	-webkit-filter: brightness(95%);
+	-moz-filter: brightness(95%);
+	cursor: pointer;
+}
+
+#selectPack {
+	margin: 20px;
+	width: calc(100% - 40px);
+}

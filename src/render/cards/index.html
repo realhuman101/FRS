@@ -14,52 +14,72 @@
 		<script>if (window.module) module = window.module;</script>
 	</head>
 	<body>
-		<i class="backArrow" onclick="location.href = '../main/index.html'"></i>
+		<i class="backArrow" id="backArrow" onclick="location.href = '../main/index.html'"></i>
 		<h1 class="title">Modify Cards</h1>
 		<hr>
-		<div id="addCard">
-			<h2 class="subtitle">Add Card</h2>
-			<hr>
-			<form id="cardForm" onsubmit="return false">
-				<input type="text" id="cardQuestion" placeholder="Question" minlength="5" maxlength="150" required>
-				<input type="text" id="cardAnswer" placeholder="Answer" maxlength="250" required>
+		<div id="packSelect" style="display: initial">
+			<div id="addCardPack">
+				<h2 class="subtitle">Add Card Pack</h2>
 				<hr style="margin: 10px auto">
-				<h3 class="description">Input Validation</h3>
-				<div class="inputValidation">
-					<input type="checkbox" id="caseSensitive" checked>Case Sensitive
-					<input type="checkbox" id="ignoreTrailing" checked>Ignore Trailing Spaces
-					<input type="checkbox" id="ignoreSpaces">Ignore All Spaces
-					<input type="checkbox" id="convertDash">Convert Dashes to Spaces
-				</div>
-				<input type="submit" value="Add Card">
-			</form>
-		</div>
-		<hr>
-		<div id="viewCards">
-			<h2 class="subtitle">View Cards</h2>
-			<h3 class="description">Left-Click to edit cards, Right-Click to delete cards</h3>
-			<hr>
-			<div id="cards">
-				
+				<form id="cardPackForm" onsubmit="return false">
+					<input type="text" id="cardPackName" placeholder="Card Pack Name" minlength="3" maxlength="15" required>
+					<input type="submit" value="Add Card Pack">
+				</form>
 			</div>
-			
-			<div id="modifyCard" style="display: none">
-				<div class="modifyCardPopup">
-					<h2 class="subtitle">Edit Card</h2>
-					<hr>
-					<form id="editCard" onsubmit="return false">
-						<input type="text" id="editQuestion" placeholder="New Question" minlength="5" maxlength="150" required>	
-						<input type="text" id="editAnswer" placeholder="New Answer" maxlength="250" required>
-						<h3 class="description">Input Validation</h3>
-						<div class="inputValidation IVE">
-							<input type="checkbox" id="EcaseSensitive" checked>Case Sensitive
-							<input type="checkbox" id="EignoreTrailing" checked>Ignore Trailing Spaces
-							<input type="checkbox" id="EignoreSpaces">Ignore All Spaces
-							<input type="checkbox" id="EconvertDash">Convert Dashes to Spaces
-						</div>
-						<input type="submit" value="Edit Card">
-					</form>
-				</div>	
+			<hr>
+			<div id="selectCardPack">
+				<h2 class="subtitle">Select Card Pack</h2>
+				<hr>
+				<div id="cardPacks">
+					
+				</div>
+			</div>
+		</div>
+		<div id="cardConfig" style="display: none">
+			<div id="addCard">
+				<h2 class="subtitle">Add Card</h2>
+				<hr>
+				<form id="cardForm" onsubmit="return false">
+					<input type="text" id="cardQuestion" placeholder="Question" minlength="5" maxlength="150" required>
+					<input type="text" id="cardAnswer" placeholder="Answer" maxlength="250" required>
+					<hr style="margin: 10px auto">
+					<h3 class="description">Input Validation</h3>
+					<div class="inputValidation">
+						<input type="checkbox" id="caseSensitive" checked>Case Sensitive
+						<input type="checkbox" id="ignoreTrailing" checked>Ignore Trailing Spaces
+						<input type="checkbox" id="ignoreSpaces">Ignore All Spaces
+						<input type="checkbox" id="convertDash">Convert Dashes to Spaces
+					</div>
+					<input type="submit" value="Add Card">
+				</form>
+			</div>
+			<hr>
+			<div id="viewCards">
+				<h2 class="subtitle">View Cards</h2>
+				<h3 class="description">Left-Click to edit cards, Right-Click to delete cards</h3>
+				<hr>
+				<div id="cards">
+					
+				</div>
+				
+				<div id="modifyCard" style="display: none">
+					<div class="modifyCardPopup">
+						<h2 class="subtitle">Edit Card</h2>
+						<hr>
+						<form id="editCard" onsubmit="return false">
+							<input type="text" id="editQuestion" placeholder="New Question" minlength="5" maxlength="150" required>	
+							<input type="text" id="editAnswer" placeholder="New Answer" maxlength="250" required>
+							<h3 class="description">Input Validation</h3>
+							<div class="inputValidation IVE">
+								<input type="checkbox" id="EcaseSensitive" checked>Case Sensitive
+								<input type="checkbox" id="EignoreTrailing" checked>Ignore Trailing Spaces
+								<input type="checkbox" id="EignoreSpaces">Ignore All Spaces
+								<input type="checkbox" id="EconvertDash">Convert Dashes to Spaces
+							</div>
+							<input type="submit" value="Edit Card">
+						</form>
+					</div>	
+				</div>
 			</div>
 		</div>
 			
