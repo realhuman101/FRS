@@ -29,9 +29,21 @@
 			<hr>
 			<div id="selectCardPack">
 				<h2 class="subtitle">Select Card Pack</h2>
+				<h3 class="description">Left-Click to select, Right-Click to modify</h3>
 				<hr>
 				<div id="cardPacks">
 					
+				</div>
+
+				<div id="modifyCardPack" class="popupBack" style="display: none">
+					<div class="popup">
+						<h2 class="subtitle">Edit Card Pack</h2>
+						<hr style="margin: 10px auto">
+						<form id="editCardPack">
+							<input type="text" id="editName" placeholder="Card Pack Name" minlength="3" maxlength="15" required>
+							<input type="submit" value="Edit Card Pack">
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -62,8 +74,8 @@
 					
 				</div>
 				
-				<div id="modifyCard" style="display: none">
-					<div class="modifyCardPopup">
+				<div id="modifyCard" class="popupBack" style="display: none">
+					<div class="popup">
 						<h2 class="subtitle">Edit Card</h2>
 						<hr>
 						<form id="editCard" onsubmit="return false">

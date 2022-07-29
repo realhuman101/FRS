@@ -50,6 +50,12 @@ $(document).ready(function () {
 		}
 	});
 
+	$('#modifyCardPack').click(function(e) {
+		if (e.target.id == 'modifyCardPack') {
+			$('#modifyCardPack').css({'display':'none'});
+		}
+	});
+
 	$('#cardPackForm').submit(function() {
 		fs.readFile(fileName, 'utf8', function (error, data) {
 			var file = JSON.parse(data);
@@ -89,7 +95,8 @@ function updateCardPackView() {
 			const amount = document.createElement('p');
 
 			card.className = 'cardPack';
-			card.onclick = function() {selectCardPack(elem)}
+			card.onclick = function() {selectCardPack(elem)};
+			card.oncontextmenu = function() {editCardPack(elem)};
 
 			name.innerText = elem.name;
 			amount.innerText = `${elem.cards.length} card(s)`
@@ -208,5 +215,33 @@ function selectCardPack(cardPackData) {
 		$('#cardConfig').css({'display':'initial'});
 
 		updateCardView();
+	})
+}
+
+function editCardPack(cardPackData) {
+	fs.readFile(fileName, 'utf8', function (error, data) {
+		$('#editName').val(cardPackData.name);
+		
+		$('#modifyCardPack').css({'display':'block'});
+
+		$('#editCardPack').submit(function () {
+			var file = JSON.parse(data);
+			const cardPacks = file.cardPacks;
+
+			const index = cardPacks.findIndex((obj => obj.name == cardPackData.name));
+
+			file.cardPacks[index].name = $('#editName').val();
+
+			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+				if (err) return console.log(err);
+			});
+
+			$('#modifyCardPack').css({'display':'none'});
+
+			$('#editName').val('');
+			updateCardPackView();
+
+			$('#editCardPack').unbind('submit');
+		})
 	})
 }
