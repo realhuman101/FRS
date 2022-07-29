@@ -3,7 +3,6 @@ import { showAlert } from "../sendAlert.js";
 const fs = require('fs');
 const fileName = './save.json';
 
-var cardPack;
 var cardPackInd;
 
 $(document).ready(function () {
@@ -89,6 +88,8 @@ function updateCardPackView() {
 			const name = document.createElement('h3');
 
 			card.className = 'cardPack';
+			card.onclick = function() {selectCardPack(elem)}
+
 			name.innerText = elem.name;
 
 			document.getElementById('cardPacks').appendChild(card);
@@ -189,5 +190,18 @@ function modifyCard(card,cardData) {
 
 			$('#editCard').unbind('submit');
 		})
+	})
+}
+
+function selectCardPack(cardPackData) {
+	fs.readFile(fileName, 'utf8', function (error, data) {
+		const file = JSON.parse(data);
+		const cardPacks = file.cardPacks;
+
+		let cardPack = cardPackData.name;
+		cardPackInd = cardPacks.findIndex(x => x.name == cardPack);
+
+		$('#packSelect').css({'display':'none'});
+		$('#cardConfig').css({'display':'initial'});
 	})
 }
