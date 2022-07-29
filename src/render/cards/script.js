@@ -3,8 +3,11 @@ import { showAlert } from "../sendAlert.js";
 const fs = require('fs');
 const fileName = './save.json';
 
+var cardPack;
+var cardPackInd;
+
 $(document).ready(function () {
-	updateCardView();
+	updateCardPackView();
 
 	$('#cardForm').submit(function (e) {
 		fs.readFile(fileName, 'utf8', function (error, data) {
@@ -13,7 +16,7 @@ $(document).ready(function () {
 			const question = $('#cardQuestion').val();
 			const answer = $('#cardAnswer').val();
 
-			file.cards.push({
+			file.cardPacks[cardPackInd].cards.push({
 				question: question,
 				answer: answer,
 				inputValidation: {
@@ -47,7 +50,52 @@ $(document).ready(function () {
 			$('#modifyCard').css({'display':'none'});
 		}
 	});
+
+	$('#cardPackForm').submit(function() {
+		fs.readFile(fileName, 'utf8', function (error, data) {
+			var file = JSON.parse(data);
+			const name = $('#cardPackName').val();
+
+			if (file.cardPacks.some(e => e.name == name)) {
+				showAlert(`'${name}' already exists as a card pack`);
+			} else {
+				file.cardPacks.push({
+					name: name,
+					cards: []
+				});
+
+				fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+					if (err) return console.log(err);
+				});
+			}
+			
+			updateCardPackView();
+
+			$('#cardPackName').val('');
+		})
+	})
 })
+
+function updateCardPackView() {
+	fs.readFile(fileName, 'utf8', function (error, data) {
+		$('#cardPacks').empty();
+
+		const file = JSON.parse(data);
+
+		const items = file.cardPacks;
+
+		items.forEach(elem => {
+			const card = document.createElement('div');
+			const name = document.createElement('h3');
+
+			card.className = 'cardPack';
+			name.innerText = elem.name;
+
+			document.getElementById('cardPacks').appendChild(card);
+			card.appendChild(name);
+		});
+	})
+}
 
 function updateCardView() {
 	fs.readFile(fileName, 'utf8', function (error, data) {
@@ -55,7 +103,7 @@ function updateCardView() {
 
 		const file = JSON.parse(data);
 
-		const items = file.cards;
+		const items = file.cardPacks[cardPackInd].cards;
 
 		items.forEach(elem => {
 			const card = document.createElement('div');
@@ -79,9 +127,9 @@ function updateCardView() {
 function deleteCard(card,cardData) {
 	fs.readFile(fileName, 'utf8', function (error, data) {
 		var file = JSON.parse(data);
-		const cards = file.cards;
+		const cards = file.cardPacks[cardPackInd].cards;
 
-		file.cards.splice(cards.indexOf(cardData),1);
+		file.cardPacks[cardPackInd].cards.splice(cards.indexOf(cardData),1);
 
 		fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
 			if (err) return console.log(err);
@@ -107,16 +155,16 @@ function modifyCard(card,cardData) {
 
 		$('#editCard').submit(function (e) {
 			var file = JSON.parse(data);
-			const cards = file.cards;
+			const cards = file.cardPacks[cardPackInd].cards;
 			
 			const index = cards.findIndex((obj => (obj.answer == cardData.answer) && (obj.question == cardData.question)));
 			
 			const question = $('#editQuestion').val();
 			const answer = $('#editAnswer').val();
 			
-			file.cards[index].question = question;
-			file.cards[index].answer = answer;
-			file.cards[index].inputValidation = {
+			file.cardPacks[cardPackInd].cards[index].question = question;
+			file.cardPacks[cardPackInd].cards[index].answer = answer;
+			file.cardPacks[cardPackInd].cards[index].inputValidation = {
 				caseSensitive: $('#EcaseSensitive').is(":checked"),
 				ignoreTrailing: $('#EignoreTrailing').is(":checked"),
 				ignoreSpaces: $('#EignoreSpaces').is(":checked"),
