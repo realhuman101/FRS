@@ -130,14 +130,17 @@ function updateCardPackView() {
 		items.forEach(elem => {
 			const card = document.createElement('div');
 			const name = document.createElement('h3');
+			const amount = document.createElement('p');
 
 			card.className = 'cardPack';
 			card.onclick = function() {selectCardPack(elem)}
 
 			name.innerText = elem.name;
+			amount.innerText = `${elem.cards.length} card(s)`
 
 			document.getElementById('cardPacks').appendChild(card);
 			card.appendChild(name);
+			card.appendChild(amount);
 		});
 	})
 }
