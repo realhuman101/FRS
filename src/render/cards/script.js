@@ -1,7 +1,8 @@
 import { showAlert } from "../sendAlert.js";
+const { findSavePath } = require('../savePath.js');
 
 const fs = require('fs');
-const fileName = './save.json';
+const fileName = findSavePath();
 
 var cardPackInd;
 
