@@ -64,12 +64,12 @@
 }
 
 .front {
-	background-color: #bbb;
-	color: black;
+	background-color: white;
+	color: rgb(15, 15, 15);
 }
   
 .back {
-	background-color: #2980b9;
+	background-color: rgb(67, 67, 67);
 	color: white;
 	transform: rotateY(180deg);
 }
