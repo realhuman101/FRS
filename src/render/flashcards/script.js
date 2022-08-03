@@ -82,6 +82,8 @@ function setup() {
 }
 
 function setFlashcards(cards,current) {
+	$('#slideNum').text((current + 1).toString() + '/' + (cards.length).toString());
+
 	var currentCard = cards[current];
 
 	$('#inner').css({'transform':'rotateY(0deg)'})
