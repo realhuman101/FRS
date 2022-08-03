@@ -4,7 +4,7 @@ A desktop application that helps users revise. Users have the ability to create 
 ## Installation
 ### Packaged Download
 You can download the software [here](https://realhuman101.github.io/FRS/downloads/)
-### Download with Git
+### Download with Git and npm
 - `git clone https://github.com/realhuman101/FRS.git`
 - `npm i`
 - `npm i -D`
