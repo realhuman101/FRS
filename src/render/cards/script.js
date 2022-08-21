@@ -27,7 +27,7 @@ $(document).ready(function () {
 				}
 			});
 			
-			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+			fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
 				if (err) return console.log(err);
 			});
 
@@ -70,7 +70,7 @@ $(document).ready(function () {
 					cards: []
 				});
 
-				fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+				fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
 					if (err) return console.log(err);
 				});
 			}
@@ -143,7 +143,7 @@ function deleteCard(card,cardData) {
 
 		file.cardPacks[cardPackInd].cards.splice(cards.indexOf(cardData),1);
 
-		fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+		fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
 			if (err) return console.log(err);
 		});
 
@@ -183,7 +183,7 @@ function modifyCard(card,cardData) {
 				convertDash: $('#EconvertDash').is(":checked")
 			}
 			
-			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+			fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
 				if (err) return console.log(err);
 			});
 			
@@ -233,7 +233,7 @@ function editCardPack(cardPackData) {
 
 			file.cardPacks[index].name = $('#editName').val();
 
-			fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+			fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
 				if (err) return console.log(err);
 			});
 
@@ -256,7 +256,7 @@ function editCardPack(cardPackData) {
 
 				file.cardPacks.splice(index, 1);
 
-				fs.writeFile(fileName, JSON.stringify(file), function writeJSON(err) {
+				fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
 					if (err) return console.log(err);
 				});
 
