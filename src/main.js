@@ -15,7 +15,8 @@ function createWindow () {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false
-    }
+    },
+    icon: 'assets/FRS Logo.png'
   })
 
   win.maximize()

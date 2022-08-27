@@ -1,4 +1,4 @@
-# FRS - Flashcard Revision Software
+# FRS - Flashcard Revision Software <img src="assets/FRS Logo.png" width="40" align="right"/>  
 A desktop application that helps users revise. Users have the ability to create cards, which allows for them to both revise and quiz on said cards.  
   
 ## Installation
