@@ -10,6 +10,9 @@ You can download the software [here](https://realhuman101.github.io/FRS/download
 - `npm i -D`
 - `npm run start`
 
+## Bugs and Issues
+If you ever encounter a bug or an issue, please create a new issue [here](https://github.com/realhuman101/FRS/issues)  
+
 ## Screenshots
 ### Homepage
 ![](assets/screenshots/homepage.png)  
