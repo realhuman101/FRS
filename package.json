@@ -29,8 +29,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "frs",
-            "iconUrl": "assets/FRS Logo.png"
+            "name": "frs"
           }
         },
         {
