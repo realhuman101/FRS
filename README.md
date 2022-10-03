@@ -8,7 +8,7 @@ You can download the software [here](https://realhuman101.github.io/FRS/download
 - `git clone https://github.com/realhuman101/FRS.git`
 - `npm i`
 - `npm i -D`
-- `npm start`
+- `npm run start`
 
 ## Screenshots
 ### Homepage
