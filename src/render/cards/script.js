@@ -201,7 +201,7 @@ function modifyCard(card,cardData) {
 			$('#editQuestion').val('');
 			$('#editAnswer').val('');
 
-			$('#EcaseSensitive').prop('checked', true);
+			$('#EcaseSensitive').prop('checked', false);
 			$('#EignoreTrailing').prop('checked', true);
 			$('#EignoreSpaces').prop('checked', false);
 			$('#EconvertDash').prop('checked', false);
