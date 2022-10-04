@@ -150,8 +150,6 @@ function deleteCard(card,cardData) {
 			}
 		}
 
-		console.log(index);
-
 		file.cardPacks[cardPackInd].cards.splice(index,1);
 
 		fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
