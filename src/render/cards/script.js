@@ -141,7 +141,30 @@ function deleteCard(card,cardData) {
 		var file = JSON.parse(data);
 		const cards = file.cardPacks[cardPackInd].cards;
 
-		file.cardPacks[cardPackInd].cards.splice(cards.indexOf(cardData),1);
+		var dataCards = {
+			question: cardData.question,
+			answer: cardData.answer,
+			inputValidation:
+				{
+					caseSensitive: cardData.inputValidation.caseSensitive,
+					ignoreTrailing: cardData.inputValidation.ignoreTrailing,
+					ignoreSpaces: cardData.inputValidation.ignoreSpaces,
+					convertDash: cardData.inputValidation.convertDash
+				}
+		}
+
+		var index = -1;
+
+		for (var i = 0; i < cards.length; i++) {
+			if (cards[i].question == dataCards.question && cards[i].answer == dataCards.answer) {
+				index = i;
+				break;
+			}
+		}
+
+		console.log(index);
+
+		file.cardPacks[cardPackInd].cards.splice(index,1);
 
 		fs.writeFile(fileName, JSON.stringify(file, null, '\t'), function writeJSON(err) {
 			if (err) return console.log(err);
