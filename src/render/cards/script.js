@@ -6,9 +6,9 @@ const fileName = findSavePath();
 
 var cardPackInd;
 
-$(document).ready(function () {
-	updateCardPackView();
+updateCardPackView();
 
+$(document).ready(function () {
 	$('#cardForm').submit(function (e) {
 		fs.readFile(fileName, 'utf8', function (error, data) {
 			var file = JSON.parse(data);
@@ -34,7 +34,7 @@ $(document).ready(function () {
 			$('#cardQuestion').val('');
 			$('#cardAnswer').val('');
 			
-			$('#caseSensitive').prop('checked', true);
+			$('#caseSensitive').prop('checked', false);
 			$('#ignoreTrailing').prop('checked', true);
 			$('#ignoreSpaces').prop('checked', false);
 			$('#convertDash').prop('checked', false);
@@ -141,22 +141,10 @@ function deleteCard(card,cardData) {
 		var file = JSON.parse(data);
 		const cards = file.cardPacks[cardPackInd].cards;
 
-		var dataCards = {
-			question: cardData.question,
-			answer: cardData.answer,
-			inputValidation:
-				{
-					caseSensitive: cardData.inputValidation.caseSensitive,
-					ignoreTrailing: cardData.inputValidation.ignoreTrailing,
-					ignoreSpaces: cardData.inputValidation.ignoreSpaces,
-					convertDash: cardData.inputValidation.convertDash
-				}
-		}
-
 		var index = -1;
 
 		for (var i = 0; i < cards.length; i++) {
-			if (cards[i].question == dataCards.question && cards[i].answer == dataCards.answer) {
+			if (cards[i].question == cardData.question && cards[i].answer == cardData.answer) {
 				index = i;
 				break;
 			}
